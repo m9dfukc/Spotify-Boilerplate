@@ -10,7 +10,7 @@
 		"64x64": "img/64x64.png",
 		"128x128": "img/128x128.png"
 	},
-	"AppURL": "http://mindthecode.com",
+	"AppURL": "http://YOUR_URL",
 	"AppDescription": "Spotify Boilerplate",
 	"ApiPermissions" : {
 		"core" : ["private"],

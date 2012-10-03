@@ -1,0 +1,24 @@
+{
+  "author": "m9dfukc",
+  "name": "Spotify-Boilerplate-Brunch",
+  "description": "Spotify Boilerplate with Brunch as a generator and Coffee for breakfast",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/m9dfukc/spine-on-brunch/tree/require"
+  },
+  "engines": {
+    "node": "~0.8.x"
+  },
+  "scripts": {
+    "start": "brunch watch --server"
+  },
+  "dependencies": {
+    "javascript-brunch": "> 1.0 < 1.3",
+    "auto-reload-brunch": "1.3.x",
+    "coffee-script-brunch": "> 1.0 < 1.3",
+    "css-brunch": "> 1.0 < 1.3",
+    "stylus-brunch": "> 1.0 < 1.3",
+    "clean-css-brunch": "> 1.0 < 1.3"
+  }
+}
