@@ -5,7 +5,6 @@ exports.config =
       defaultExtension: 'coffee'
       joinTo:
         'js/app.js': /^app/
-        'js/vendor/spotify.js': /^vendor\/scripts\/spotify/
         'js/vendor/common.js': /^vendor\/scripts\/common/
       before: [
         'vendor/scripts/common/jquery-1.8.1.min.js',

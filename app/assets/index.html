@@ -8,28 +8,26 @@
 	<link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-<div id="wrapper">	
+<div id="wrapper">  
 	<div id="content"></div>
 	<div id="offline">Unable to connect to the internet</div>
 </div>
 
 <!-- remove this before going live! -->
 <script>
-  window.brunch = window.brunch || {};
-  window.brunch['auto-reload'] = {enabled: true};
+	window.brunch = window.brunch || {};
+	window.brunch['auto-reload'] = {enabled: true};
 </script>
 
 <!-- javascript at the end of the page -->
 <script type="text/javascript" src="js/vendor/common.js"></script>
-<script type="text/javascript" src="js/vendor/spotify.js"></script>
 <script type="text/javascript" src="js/app.js"></script>
 
 <script>
 	var exports = this;
 	$(function() {
 		var App = require("app");
-        exports.app = new App();
-        /* Arg - not working yet because of static members shit! */
+		exports.app = new App();
 	});
 </script>
 

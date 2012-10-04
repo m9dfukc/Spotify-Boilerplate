@@ -11,30 +11,29 @@ class App
   playerImage   = new views.Player()
   appname       = document.location.href.replace("sp://", "").split("/")[0]
   appBaseUrl    = "spotify:app:" + appname + ":"
-  @loader       = new Loader()
-  @sammy        = $.sammy "#content", App.routing
-
+  
   constructor: ->
     application.observe models.EVENT.ARGUMENTSCHANGED, @tabChanged
     models.session.observe models.EVENT.STATECHANGED, @stateChanged
 
+    @sammy = $.sammy "#content", ->
+      @use "Mustache", "html"
 
-  @routing: ->
-    @use "Mustache", "html"
-    @get "home", (ctxt) ->
-      App.loader.loadSection ctxt, "news", "/templates/home.html", "dummy_data/example_data.json", ->
-        console.log "section home"
+      @get "home", (ctxt) ->
+        Loader.loadSection ctxt, "news", "/templates/home.html", "dummy_data/example_data.json", ->
+          console.log "section home"
 
-    @get "exampletab", (ctxt) ->
-      App.loader.loadSection ctxt, "exampletab", "/templates/example_page.html", null, ->
-        console.log "section exampletab"
+      @get "exampletab", (ctxt) ->
+        Loader.loadSection ctxt, "exampletab", "/templates/example_page.html", null, ->
+          console.log "section exampletab"
 
-    @get "exampletab/:deeplink", (ctxt) ->
-      App.loader.loadSection ctxt, "exampletab_deeplink", "/templates/example_deeplink.html", null, ->
-        console.log "section exampletab/:deeplink"
+      @get "exampletab/:deeplink", (ctxt) ->
+        Loader.loadSection ctxt, "exampletab_deeplink", "/templates/example_deeplink.html", null, ->
+          console.log "section exampletab/:deeplink"
 
-    @around hideAll
+      @around hideAll
 
+    @tabChanged()
 
   stateChanged: =>
     switch models.session.state
@@ -42,7 +41,6 @@ class App
         offlineMode()
       else
         onlineMode()
-
 
   tabChanged: =>
     return  if models.session.state is 2
@@ -52,19 +50,16 @@ class App
       do (arg) ->
         args += "/" + arg
 
-    console.log "Tabs changed", models.application.arguments, "Running route", args
-    App.sammy.runRoute "get", args
-
+    #console.log "Tabs changed", models.application.arguments, "Running route", args
+    @sammy.runRoute "get", args
 
   offlineMode = ->
     $("#content").fadeOut()
     $("#offline").fadeIn()
 
-
   onlineMode = ->
     $("#content").fadeIn()
     $("#offline").fadeOut()
-
 
   hideAll = (cb) ->
     $("#content .section").hide()
