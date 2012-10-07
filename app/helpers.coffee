@@ -60,6 +60,7 @@ class Loader
             Loader.loadCovers "#" + id
             # Mark as done
             Loader.sections_loaded[id] = true
+            cb(data) if cb
       else
         ctxt.render tplFile, (rendered) ->
           $("<div/>",
@@ -72,9 +73,9 @@ class Loader
           Loader.loadCovers "#" + id
           # Mark as done
           Loader.sections_loaded[id] = true
+          cb() if cb
     else
       $("#content #" + id).show()
-
-    cb() if cb
+      cb() if cb
 
 module.exports.Loader = Loader
